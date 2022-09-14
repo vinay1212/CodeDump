@@ -1,0 +1,39 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long
+ 
+void solve()
+{
+    int a,b,c;
+    cin>>a>>b>>c;
+    int fora, forb;
+    fora = a - 1;
+ 
+    int diff = b - c;
+    if(diff<0){
+        diff = diff*(-1);
+    }
+    forb = diff + (c - 1);
+    int ans = 3;
+    if(fora > forb){
+        ans = 2;
+    }
+    else if(fora < forb){
+        ans = 1;
+    }
+    cout<<ans<<endl;
+    
+    
+}
+int main()
+{
+    ll t;
+    cin >> t;
+    while(t--){
+ 
+        solve();
+    }
+    return 0;
+}
