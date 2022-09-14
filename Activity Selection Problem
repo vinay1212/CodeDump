@@ -1,0 +1,78 @@
+//Greedy
+
+
+//{ Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+
+bool sortCol(const vector <int> &v1,const vector <int> &v2){
+        if(v1[1] == v2[1]){
+            return v1[0] < v2[0];
+        }
+        else{
+            return v1[1] < v2[1];
+        }
+}
+class Solution
+{
+    public:
+    //Function to find the maximum number of activities that can
+    //be performed by a single person.
+    
+    
+    
+    int activitySelection(vector<int> start, vector<int> end, int n)
+    {
+        // Your code here
+        int count = 1;
+        vector <vector<int>>v (n, vector<int>(2, 0));
+        
+        for(int i = 0; i < n; i++){
+            v[i][0] = start[i];
+            v[i][1] = end[i];
+        }
+        
+        sort(v.begin(), v.end(), sortCol);
+       
+        int pred = v[0][1];
+        for(int i = 1; i < n; i++){
+            if(v[i][0] > pred){
+                count++;
+                pred = v[i][1];
+            }
+        }
+        return count;
+    }
+
+};
+
+//{ Driver Code Starts.
+int main()
+{
+    int t;
+    
+    //testcases
+    cin >> t;
+    while(t--)
+    {
+        //size of array
+        int n;
+        cin >> n;
+        vector<int> start(n), end(n);
+        
+        //adding elements to arrays start and end
+        for(int i=0;i<n;i++)
+            cin>>start[i];
+        for(int i=0;i<n;i++)
+            cin>>end[i];
+        Solution ob;
+        //function call
+        cout << ob.activitySelection(start, end, n) << endl;
+    }
+    return 0;
+}
+
+// } Driver Code Ends
