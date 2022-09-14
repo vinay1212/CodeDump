@@ -1,0 +1,58 @@
+#include <iostream>
+#include <bits/stdc++.h>
+#include <stack>
+using namespace std;
+ 
+#define ll long long
+ 
+void solve()
+{
+    int n = 0;
+    cin >>n;
+    string s = "";
+    for(int i=0; i<n; i++){
+        char c;
+        cin>>c;
+        s += c;
+    }
+    string a = "abcdefghijklmnopqrstuvwxyz";
+    stack <char> st;
+    string ans = "";
+    for(int i = 0; i < n; i++){
+        st.push(s[i]);
+    }
+    while(!st.empty()){
+        if(st.top() == '0'){
+            st.pop();
+            string temp = "aa";
+            temp[1] = st.top();
+            st.pop();
+            temp[0]= st.top();
+            st.pop();
+ 
+            int y = stoi(temp);
+            ans += a[y-1];
+        }
+        else{
+            string temp = "a";
+            temp[0] = st.top();
+            st.pop();
+            int y = stoi(temp);
+            ans += a[y-1];
+        }
+    }
+    
+    reverse(ans.begin(), ans.end());
+    cout<<ans<<endl;
+  
+}
+int main()
+{
+    ll t;
+    cin >> t;
+    while(t--){
+ 
+        solve();
+    }
+    return 0;
+}
