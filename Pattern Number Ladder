@@ -1,0 +1,19 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int n;
+	cin>>n;
+    int step = 1, count = 1;
+    while(step <= n){
+        for(int i = 0; i < step; i++){
+            cout<<count;
+            cout<<"\t";
+            count++;
+        }
+        step++;
+        cout<<endl;
+    }
+	return 0;
+}
