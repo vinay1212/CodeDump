@@ -1,0 +1,33 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+void solve()
+{
+    int n; 
+    cin>>n;
+
+    int counter = 1;
+    int ans = 0;
+
+    while(n != 0){
+        int rem = n%10;
+        n /= 10;
+
+        ans += counter * pow(10,rem-1);
+        counter++;
+    }
+    cout<<ans<<endl;
+}
+int main()
+{
+    ll t = 1;
+    // cin >> t;
+    while (t--)
+    {
+        solve();
+    }
+    return 0;
+}
