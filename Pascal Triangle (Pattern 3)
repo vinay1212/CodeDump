@@ -1,0 +1,71 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+void solve()
+{
+    int n;
+    cin >> n;
+
+    if (n == 1)
+    {
+        cout << "1"
+             << "\t" << endl;
+        return;
+    }
+    else if (n == 2)
+    {
+        cout << "1" << endl;
+        cout << "1"
+             << "\t"
+             << "1" << endl;
+        return;
+    }
+    vector<vector<int>> v;
+    vector<int> temp;
+    temp.push_back(1);
+    v.push_back(temp);
+
+    vector<int> e = temp;
+    e.push_back(1);
+    v.push_back(e);
+
+    cout << "1" << endl;
+    cout << "1"
+         << "\t"
+         << "1" << endl;
+    int step = 3;
+
+    while (step <= n)
+    {
+        cout << "1"
+             << "\t";
+        vector<int> q;
+        q.push_back(1);
+
+        for (int i = 1; i < v[step - 2].size(); i++)
+        {
+            int sum = v[step - 2][i] + v[step - 2][i - 1];
+            cout << sum << "\t";
+
+            q.push_back(sum);
+        }
+        cout << "1";
+        q.push_back(1);
+        v.push_back(q);
+        step++;
+        cout << endl;
+    }
+}
+int main()
+{
+    ll t = 1;
+    // cin >> t;
+    while (t--)
+    {
+        solve();
+    }
+    return 0;
+}
